@@ -118,7 +118,29 @@ public class Tablero {
         
         return pJugador - pOponente;
     }
-
+// EXTRA: Devuelve las coordenadas de la línea ganadora
+    public int[][] obtenerLineaGanadora(char simbolo) {
+        // Revisa filas
+        for (int i = 0; i < 3; i++) {
+            if (matriz[i][0] == simbolo && matriz[i][1] == simbolo && matriz[i][2] == simbolo) {
+                return new int[][]{{i, 0}, {i, 1}, {i, 2}};
+            }
+        }
+        // Revisa columnas
+        for (int i = 0; i < 3; i++) {
+            if (matriz[0][i] == simbolo && matriz[1][i] == simbolo && matriz[2][i] == simbolo) {
+                return new int[][]{{0, i}, {1, i}, {2, i}};
+            }
+        }
+        // Revisa diagonales
+        if (matriz[0][0] == simbolo && matriz[1][1] == simbolo && matriz[2][2] == simbolo) {
+            return new int[][]{{0, 0}, {1, 1}, {2, 2}};
+        }
+        if (matriz[0][2] == simbolo && matriz[1][1] == simbolo && matriz[2][0] == simbolo) {
+            return new int[][]{{0, 2}, {1, 1}, {2, 0}};
+        }
+        return null; // Si nadie ha ganado aún
+    }
 
 
 
